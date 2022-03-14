@@ -11,6 +11,6 @@ namespace App.Core.Entities
         public string? Name { get; set; }
 
 
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Product>? Products { get; set; }
     }
 }
