@@ -8,9 +8,9 @@ namespace App.Core
 {
     public abstract class BaseEntity
     {
-        public Guid Id { get; set; }= new Guid();
+        public Guid Id { get; set; }= Guid.NewGuid();
         public DateTime CreatedDate { get; set; }=DateTime.Now;
-        public DateTime UpdatedDate { get; set; } = DateTime.Now;
+        public DateTime? UpdatedDate { get; set; } = DateTime.Now;
 
     }
 }

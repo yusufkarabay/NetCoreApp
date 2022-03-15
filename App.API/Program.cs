@@ -1,3 +1,11 @@
+using App.Core.Repositories;
+using App.Core.UnitOfWorks;
+using App.Repository;
+using App.Repository.Repositories;
+using App.Repository.UnitOfWorks;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +15,31 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+///*************************************************************************************
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+
+
+builder.Services.AddDbContext<AppDbContext>(x =>
+{
+    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
+    {
+        //bu þekilde doðrudan konumunu gösterebiliriz fakat projenin adý deðiþirse  çalýþmayacaktýr
+        //option.MigrationsAssembly("App.Repository");
+
+
+        option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
+    });
+});
 var app = builder.Build();
+
+
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -10,15 +10,14 @@ namespace App.Core.Services
     public interface IGenericService<T> where T : class
     {
         Task<T> GetByIdAsync(Guid id);
-        Task<IEnumerable<T>> GetAllAsync();
-        IQueryable<T> GetAll(Expression<Func<T, bool>> expression);
+        Task<IEnumerable<T>> GetAllAsync();      
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
-        Task AddAsync(T entity);
-        Task AddRangeAsync(IEnumerable<T> entities);
+        Task<T> AddAsync(T entity);
+        Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
         Task DeleteByIdAsync(Guid id);
-        Task DeleteRangeAsyng(IEnumerable<T> entities);
+        Task DeleteRangeAsync(IEnumerable<T> entities);
     }
 }

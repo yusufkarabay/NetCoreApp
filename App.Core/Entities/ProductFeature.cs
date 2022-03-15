@@ -13,7 +13,7 @@ namespace App.Core.Entities
         public string? Height { get; set; }
         public string? Width { get; set; }
 
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
 
         public Product? Product { get; set; }
     }

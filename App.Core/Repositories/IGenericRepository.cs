@@ -10,7 +10,7 @@ namespace App.Core.Repositories
     public interface IGenericRepository<T> where T : class
     {
         Task<T> GetByIdAsync(Guid id);
-        IQueryable<T> GetAll(Expression<Func<T, bool>> expression);
+        IQueryable<T> GetAll();
 
         //list olarak kullanılsaydı. verileri alır sorgulama işlemini burada yapardı
         //IQueryable ise sorgunun tamamını veritabanında yapar ve sonucu getirir
