@@ -1,8 +1,11 @@
 using App.Core.Repositories;
+using App.Core.Services;
 using App.Core.UnitOfWorks;
 using App.Repository;
 using App.Repository.Repositories;
 using App.Repository.UnitOfWorks;
+using App.Service.Mapping;
+using App.Service.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -19,6 +22,9 @@ builder.Services.AddSwaggerGen();
 ///*************************************************************************************
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+builder.Services.AddAutoMapper(typeof(MapProfile));
+
 
 
 
