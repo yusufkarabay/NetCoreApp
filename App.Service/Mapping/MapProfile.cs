@@ -13,9 +13,12 @@ namespace App.Service.Mapping
     {
         public MapProfile()
         {
+            //reversemap iki yönlü dönüşüm sağlar. yazmasak 1.den 2.ye dönüşüm sağlar
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<ProductFeature, ProductFeatureDto>().ReverseMap();
+            CreateMap<ProductUpdateDto, Product>();
+
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using App.Core.Repositories;
+﻿using App.Core.Entities;
+using App.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace App.Repository.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         protected readonly AppDbContext _context;
         private readonly DbSet<T> _dbSet;

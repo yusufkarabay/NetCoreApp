@@ -1,4 +1,5 @@
-﻿using App.Core.Repositories;
+﻿using App.Core.Entities;
+using App.Core.Repositories;
 using App.Core.Services;
 using App.Core.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace App.Service.Services
 {
-    public class GenericService<T> : IGenericService<T> where T : class
+    public class GenericService<T> : IGenericService<T> where T : BaseEntity
     {
         //savechanges metotları tek bir elden olması için IUnitOfWork burada kullanıldı
 

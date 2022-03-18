@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Core.DTOs
+namespace App.Service.Services
 {
-    public class CategoryDto : BaseDto
+    public class ProductFeatureService
     {
-        public string? Name { get; set; }
     }
 }

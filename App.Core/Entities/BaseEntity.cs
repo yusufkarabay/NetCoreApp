@@ -11,6 +11,7 @@ namespace App.Core.Entities
         public Guid Id { get; set; }= Guid.NewGuid();
         public DateTime CreatedDate { get; set; }=DateTime.Now;
         public DateTime? UpdatedDate { get; set; } = DateTime.Now;
-
+        public bool Deleted { get; set; } = false;
+        public bool Enabled { get; set; } = true;
     }
 }

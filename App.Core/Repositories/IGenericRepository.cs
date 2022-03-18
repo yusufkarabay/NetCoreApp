@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace App.Core.Repositories
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : BaseEntity
     {
         Task<T> GetByIdAsync(Guid id);
         IQueryable<T> GetAll();
-
-        //list olarak kullanılsaydı. verileri alır sorgulama işlemini burada yapardı
-        //IQueryable ise sorgunun tamamını veritabanında yapar ve sonucu getirir
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
         Task AddAsync(T entity);
         Task AddRangeAsync(IEnumerable<T> entities);

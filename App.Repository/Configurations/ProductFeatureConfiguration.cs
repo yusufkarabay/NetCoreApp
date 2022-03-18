@@ -14,9 +14,14 @@ namespace App.Repository.Configurations
         public void Configure(EntityTypeBuilder<ProductFeature> builder)
         {
           
-
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x=>x.Color).HasMaxLength(100);
+           
             //bir productın 1 tane feature tablosunda karşılığı olur. feature içindeki propertiyler değil. Birebir tablo ilişkisi 
           //  builder.HasOne(x => x.Product).WithOne(x => x.ProductFeature).HasForeignKey<ProductFeature>(x => x.ProductId);
+
+        
         }
     }
 }

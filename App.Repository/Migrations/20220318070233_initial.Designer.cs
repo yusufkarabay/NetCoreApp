@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220315140401_initial")]
+    [Migration("20220318070233_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,8 +33,16 @@ namespace App.Repository.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -42,6 +50,26 @@ namespace App.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("47459702-6dd2-4ad8-b1ab-9955e9792328"),
+                            CreatedDate = new DateTime(2022, 3, 18, 10, 2, 33, 363, DateTimeKind.Local).AddTicks(7160),
+                            Deleted = false,
+                            Enabled = false,
+                            Name = "Bilgisayarlar",
+                            UpdatedDate = new DateTime(2022, 3, 18, 10, 2, 33, 363, DateTimeKind.Local).AddTicks(7161)
+                        },
+                        new
+                        {
+                            Id = new Guid("092ce291-875b-4f13-9d04-95e9456440d1"),
+                            CreatedDate = new DateTime(2022, 3, 18, 10, 2, 33, 363, DateTimeKind.Local).AddTicks(7172),
+                            Deleted = false,
+                            Enabled = false,
+                            Name = "Monitörler",
+                            UpdatedDate = new DateTime(2022, 3, 18, 10, 2, 33, 363, DateTimeKind.Local).AddTicks(7173)
+                        });
                 });
 
             modelBuilder.Entity("App.Core.Entities.Product", b =>
@@ -56,8 +84,16 @@ namespace App.Repository.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -84,13 +120,26 @@ namespace App.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Color")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Height")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Width")
                         .HasColumnType("nvarchar(max)");
